@@ -73,6 +73,19 @@ module.exports = function (_path) {
                     exclude: /node_modules/
                 },
                 {
+                    test: /\.(ttf|eot|woff|woff2)$/i,
+                    loaders: ['file?context=' + rootAssetPath + '&name=assets/static/[ext]/[name].[hash].[ext]']
+                },
+                //Font awesome loader config
+                {
+                    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])$/,
+                    loader: 'url?limit=10000&mimetype=application/font-woff'
+                },
+                {
+                    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])$/,
+                    loaders: ['file?context=' + rootAssetPath + '&name=assets/static/[ext]/[name].[hash].[ext]']
+                },
+                {
                     test: /\.(png|jpg|svg)$/,
                     loaders: [
                         'url?limit=8192&name=assets/images/[name].[hash].[ext]',
