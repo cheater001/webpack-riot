@@ -1,0 +1,18 @@
+sample-output {
+  h1 {
+    color: blue;
+  }
+
+  i.jpg {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    background-image: url('../images/image.jpg');
+  }
+  i.svg {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-image: url('../images/image.svg');
+  }
+}
