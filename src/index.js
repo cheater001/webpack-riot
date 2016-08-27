@@ -1,6 +1,9 @@
-let riot = require('riot');
-
 require('./styles/app.scss');
-require('./tags/sample_output/sample_output.tag');
+require('./tags/app/app.tag');
+// require('./tags/sample_output/sample_output.tag');
 
-document.addEventListener('DOMContentLoaded', () => riot.mount('sample-output'));
+document.addEventListener('DOMContentLoaded', () => {
+    riot.mount('app');
+    riot.route.base('/');
+    riot.route.start(true);
+});

@@ -7,6 +7,7 @@ var Manifest = require('manifest-revision-webpack-plugin');
 var TextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlPlugin   = require('html-webpack-plugin');
 
 /**
  * Global webpack config
@@ -127,7 +128,8 @@ module.exports = function (_path) {
             ]),
             new webpack.ProvidePlugin({
                 $: "jquery",
-                jQuery: "jquery"
+                jQuery: "jquery",
+                riot: "riot"
             }),
             new webpack.optimize.CommonsChunkPlugin('vendors', 'assets/js/vendors.js'),
             new TextPlugin('assets/css/[name].css'),
@@ -135,6 +137,12 @@ module.exports = function (_path) {
                 rootAssetPath: rootAssetPath,
                 ignorePaths: ['.DS_Store']
             }),
+            new HtmlPlugin({
+                title: 'Rambler Webpack Dev Boilerplate',
+                chunks: ['application', 'vendors'],
+                filename: 'index.html',
+                template: path.join(_path, 'src', 'index.html')
+            })
         ]
     };
 };
